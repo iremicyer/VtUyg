@@ -1,0 +1,48 @@
+﻿@model IEnumerable<VtUyg.Models.Kayitlar>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Kayıtlar</h2>
+
+@Html.ActionLink("Yeni Kayıt", "yeniKayit", null, new { @class = "btn btn-primary" })
+<br />
+
+
+<table class="table table-hover">
+
+    <thead>
+        <tr>
+
+            <th>KN</th>
+            <th>Adı Soyadı</th>
+            <th>E-Posta</th>
+            <th>Yaş</th>
+            <th>Düzenle</th>
+            <th>Sil</th>
+        </tr>
+
+        @foreach (var kayit in Model)
+        {
+
+        <tbody>
+            <tr>
+
+                <td> @kayit.kayId </td>
+
+                <td> @kayit.adsoyad </td>
+
+                <td> @kayit.mail </td>
+
+                <td> @kayit.yas </td>
+
+                <td> @Html.ActionLink("Düzenle", "KayitDuzenle", new { id = kayit.kayId }, new { @class = "btn btn-warning" }) </td>
+                <td> @Html.ActionLink("Sil", "kayitSil", "Home", new { id = kayit.kayId }, new { @class = "btn btn-danger" }) </td>
+            </tr>
+        </tbody>
+        //Home >> bu kısma controller adı yazılır //kayitsil kısmına actionadı yazılır
+    }
+        </thead>
+    </table>
+
+
